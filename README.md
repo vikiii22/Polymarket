@@ -13,7 +13,13 @@
 
 Este proyectico está diseñado para proveer liquidez en mercados específicos de Polymarket (CLOB). El bot calcula el **Mid-Price** dinámicamente y coloca órdenes de compra (Bids) y venta (Asks) alrededor de él, ajustando su posición para minimizar riesgos.
 
-![Polymarket Trading](https://images.mirror-media.xyz/publication-images/7d_zG5hH_Jq9K0o9Y_3z9.png?height=600&width=1200)
+![Polymarket Banner](https://pbs.twimg.com/profile_banners/1271161726702657536/1689617307/1500x500)
+
+---
+
+## 📈 Market Pulse (Live Simulation)
+
+![Market Explosion](https://quickchart.io/chart?c={type:%27line%27,data:{labels:[1,2,3,4,5,6,7,8,9,10],datasets:[{label:%27Bids%27,borderColor:%27%2300ff00%27,data:[10,15,12,25,22,40,38,60,55,90],fill:false,steppedLine:true},{label:%27Asks%27,borderColor:%27%23ff0000%27,data:[12,18,15,28,25,45,42,65,60,95],fill:false,steppedLine:true}]},options:{title:{display:true,text:%27Market%20Volatility%20Explosion%27,fontColor:%27white%27},legend:{labels:{fontColor:%27white%27}},scales:{yAxes:[{gridLines:{color:%27%23333%27},ticks:{fontColor:%27white%27}}],xAxes:[{gridLines:{color:%27%23333%27},ticks:{fontColor:%27white%27}}]}}})
 
 ---
 
