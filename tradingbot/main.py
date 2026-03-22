@@ -78,16 +78,23 @@ def main() -> None:
             print(f"{Colors.YELLOW}⚠️  No se encontraron mercados en tendencia.{Colors.ENDC}")
             return
         
-        # Validate liquidity
+        # Validate liquidity (check CLOB has order book, but keep Gamma price)
         print("📊 Validando liquidez en el libro de órdenes (CLOB)...")
         active_markets = []
         
         for m in trending_data:
-            price = client.get_mid_price(m['id'])
-            if price is not None:
-                m['price'] = price
+            # Try to check CLOB liquidity, but keep Gamma API price (real market price)
+            # get_mid_price returns None if orderbook doesn't exist (expected for some tokens)
+            clob_price = client.get_mid_price(m['id'])
+            has_clob = clob_price is not None
+            
+            # Accept market if it has a valid Gamma price (CLOB is optional)
+            if m.get('price', 0) > 0:
                 active_markets.append(m)
-                logger.debug(f"Market {m['name']}: price=${price:.3f}")
+                if has_clob:
+                    logger.debug(f"Market {m['name']}: Gamma=${m['price']:.3f}, CLOB=${clob_price:.3f}")
+                else:
+                    logger.debug(f"Market {m['name']}: Gamma=${m['price']:.3f} (no CLOB)")
         
         # Add custom market if configured
         if config.target_token_id:

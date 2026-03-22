@@ -5,6 +5,7 @@ from typing import Optional, List
 from py_clob_client.client import ClobClient
 from py_clob_client.clob_types import ApiCreds
 from py_clob_client.constants import POLYGON
+from py_clob_client.exceptions import PolyApiException
 
 from .exceptions import ApiConnectionError, InvalidTokenIdError
 from .models import OrderBook, OrderBookEntry, Position, Balance
@@ -81,7 +82,6 @@ class PolymarketClient:
                 f"Failed to initialize Polymarket client: {e}"
             ) from e
 
-    @retry_on_failure(max_retries=3, backoff=2.0)
     def get_mid_price(self, token_id: str) -> Optional[float]:
         """
         Calculate the mid price for a token if there is liquidity.
@@ -90,11 +90,11 @@ class PolymarketClient:
             token_id: The token ID to get the price for
             
         Returns:
-            Mid price (average of best bid and ask), or None if no liquidity
+            Mid price (average of best bid and ask), or None if no liquidity/orderbook
             
         Raises:
             InvalidTokenIdError: If the token ID is invalid
-            ApiConnectionError: If unable to fetch order book
+            ApiConnectionError: If unable to fetch order book (non-404 errors)
         """
         try:
             ob = self.client.get_order_book(token_id)
@@ -116,12 +116,21 @@ class PolymarketClient:
                 f"Token {token_id}: bid={best_bid:.3f}, ask={best_ask:.3f}, mid={mid_price:.3f}"
             )
             return mid_price
+        
+        except PolyApiException as e:
+            # 404 means no orderbook exists - this is expected for some tokens
+            if e.status_code == 404:
+                logger.debug(f"No orderbook exists for token {token_id}")
+                return None
+            # Other API errors should be logged as errors
+            logger.error(f"API error for token {token_id}: {e}")
+            raise ApiConnectionError(f"Failed to fetch price for {token_id}") from e
             
         except AttributeError as e:
             logger.error(f"Invalid token ID or malformed response for {token_id}: {e}")
             raise InvalidTokenIdError(f"Invalid token ID: {token_id}") from e
         except Exception as e:
-            logger.error(f"Failed to get mid price for {token_id}: {e}")
+            logger.error(f"Unexpected error getting price for {token_id}: {e}")
             raise ApiConnectionError(f"Failed to fetch price for {token_id}") from e
 
     @retry_on_failure(max_retries=2, backoff=1.5)

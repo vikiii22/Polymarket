@@ -93,23 +93,64 @@ class MarketDiscovery:
                     logger.debug(f"Skipping market without token IDs: {m.get('question', 'Unknown')}")
                     continue
                 
-                yes_token_id = token_ids[0]
-
-                # Parse prices (avoiding the '[' error)
+                # Parse outcomes and prices
+                outcomes = self._parse_json_field(m.get("outcomes"))
                 prices = self._parse_json_field(m.get("outcomePrices"))
-                current_price = self._safe_float(prices[0]) if prices else 0.5
-
+                
+                if not prices or len(prices) == 0:
+                    logger.debug(f"Skipping market without prices: {m.get('question', 'Unknown')}")
+                    continue
+                
                 # Parse metrics
                 volume = self._safe_float(m.get("volume24hr"))
                 liquidity = self._safe_float(m.get("liquidity"))
-
-                discovery_results.append({
-                    "id": yes_token_id,
-                    "name": m.get("question", "Unknown Market"),
-                    "volume": volume,
-                    "liquidity": liquidity,
-                    "price": current_price
-                })
+                
+                # For binary markets, create entries for both outcomes
+                # This shows the actual market state (e.g., Arizona 87%, Utah State 13%)
+                if len(token_ids) == 2 and len(prices) == 2:
+                    # Find the favorite (higher price)
+                    price_0 = self._safe_float(prices[0])
+                    price_1 = self._safe_float(prices[1])
+                    
+                    # Use the outcome with higher probability as the primary
+                    if price_1 > price_0:
+                        # Second outcome is the favorite
+                        primary_idx = 1
+                        primary_name = outcomes[1] if len(outcomes) == 2 else m.get("question", "Unknown")
+                    else:
+                        # First outcome is the favorite (or equal)
+                        primary_idx = 0
+                        primary_name = outcomes[0] if len(outcomes) >= 1 else m.get("question", "Unknown")
+                    
+                    # Use the question as market name, store the favorite's price
+                    market_name = m.get("question", "Unknown Market")
+                    favorite_price = max(price_0, price_1)
+                    
+                    discovery_results.append({
+                        "id": token_ids[primary_idx],
+                        "name": market_name,
+                        "volume": volume,
+                        "liquidity": liquidity,
+                        "price": favorite_price,
+                        "outcome_name": primary_name,
+                        "is_binary": True,
+                        "all_outcomes": outcomes if len(outcomes) == 2 else None,
+                        "all_prices": [price_0, price_1],
+                        "all_token_ids": token_ids
+                    })
+                else:
+                    # Single outcome or non-binary market
+                    yes_token_id = token_ids[0]
+                    current_price = self._safe_float(prices[0])
+                    
+                    discovery_results.append({
+                        "id": yes_token_id,
+                        "name": m.get("question", "Unknown Market"),
+                        "volume": volume,
+                        "liquidity": liquidity,
+                        "price": current_price,
+                        "is_binary": False
+                    })
             
             logger.info(f"Found {len(discovery_results)} trending markets")
             return discovery_results
@@ -142,7 +183,16 @@ class MarketDiscovery:
             volume = m.get('volume', 0)
             price = m.get('price', 0.5)
             
-            print(f"#{i:<4} | {name_short:<45} | ${volume:>11,.0f} | ${price:.2f}")
+            # For binary markets, show the outcome name with price
+            if m.get('is_binary') and m.get('outcome_name'):
+                outcome = m.get('outcome_name', '')
+                if len(outcome) > 20:
+                    outcome = outcome[:17] + '...'
+                price_display = f"{outcome}: ${price:.2f}"
+            else:
+                price_display = f"${price:.2f}"
+            
+            print(f"#{i:<4} | {name_short:<45} | ${volume:>11,.0f} | {price_display}")
         
         print("-" * 85 + "\n")
         
