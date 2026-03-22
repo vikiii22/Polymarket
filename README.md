@@ -1,99 +1,297 @@
-# 🚀 Polymarket Market Maker Bot
+# 🚀 Polymarket Trading Bot v2.0 - Professional Edition
 
-[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Python Version](https://img.shields.io/badge/python-3.10+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Polymarket](https://img.shields.io/badge/Polymarket-CLOB-purple.svg?style=for-the-badge&logo=polygon&logoColor=white)](https://polymarket.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Status](https://img.shields.io/badge/Status-Active-green.svg?style=for-the-badge)](https://github.com/josev/polymarket-bot)
+[![Type Checked](https://img.shields.io/badge/Type_Checked-Pydantic-success.svg?style=for-the-badge)](https://docs.pydantic.dev/)
 
-> **Un bot de trading automatizado para Polymarket que utiliza una estrategia de Market Making con gestión de inventario y simulación en tiempo real.**
-
----
-
-## 📸 Overview
-
-Este proyectico está diseñado para proveer liquidez en mercados específicos de Polymarket (CLOB). El bot calcula el **Mid-Price** dinámicamente y coloca órdenes de compra (Bids) y venta (Asks) alrededor de él, ajustando su posición para minimizar riesgos.
-
-![Polymarket Banner](https://pbs.twimg.com/profile_banners/1271161726702657536/1689617307/1500x500)
+> **🔥 Professional trading bot for Polymarket with real-time monitoring, type-safe configuration, and production-ready architecture.**
 
 ---
 
-## 📈 Market Pulse (Live Simulation)
+## 🆕 What's New in v2.0
 
-![Market Explosion](https://quickchart.io/chart?c={type:%27line%27,data:{labels:[1,2,3,4,5,6,7,8,9,10],datasets:[{label:%27Bids%27,borderColor:%27%2300ff00%27,data:[10,15,12,25,22,40,38,60,55,90],fill:false,steppedLine:true},{label:%27Asks%27,borderColor:%27%23ff0000%27,data:[12,18,15,28,25,45,42,65,60,95],fill:false,steppedLine:true}]},options:{title:{display:true,text:%27Market%20Volatility%20Explosion%27,fontColor:%27white%27},legend:{labels:{fontColor:%27white%27}},scales:{yAxes:[{gridLines:{color:%27%23333%27},ticks:{fontColor:%27white%27}}],xAxes:[{gridLines:{color:%27%23333%27},ticks:{fontColor:%27white%27}}]}}})
+### ⚡ Real-Time Monitoring (120x Faster)
+- **Before**: Polling every 10 minutes (600 seconds)
+- **Now**: Updates every 5 seconds (configurable down to 1s)
+- **Result**: Catch price movements 120x faster
+
+### 🏗️ Professional Architecture
+```
+tradingbot/
+├── api/          # API client with retry logic & type hints
+├── market/       # Discovery & monitoring modules
+├── strategies/   # Extensible strategy framework
+├── notifications/# Multi-channel alerts (Console, Telegram)
+└── utils/        # Validators, logging, decorators
+```
+
+### 🛡️ Type-Safe Configuration
+- **Pydantic BaseSettings** with automatic validation
+- Invalid keys auto-detected with clear error messages
+- DRY_RUN automatically enabled for safety
+
+### 📊 Professional Logging
+- Rotating file logs (`logs/bot.log` with 10MB rotation)
+- Structured logging with timestamps and levels
+- Separate console and file log levels
+
+### 🔧 Developer Experience
+- `pyproject.toml` for modern Python packaging
+- `Makefile` with common commands
+- Type hints throughout codebase
+- Ready for `pytest`, `mypy`, `black`, `ruff`
 
 ---
 
-## 🔥 Key Features
+## 📈 Key Features
 
-- **✅ Automated Market Making**: Colocación automática de órdenes limitadas.
-- **🛡️ Inventory Management (Skewing)**: Si el bot tiene muchas acciones, baja los precios de compra y de venta para incentivar la salida de la posición.
-- **🧪 Dry Run Mode**: Simulación completa sin usar fondos reales. Prueba tu estrategia antes de ir en vivo.
-- **📈 Performance Logging**: Seguimiento detallado del valor del portafolio, cash y shares en `balance_history.txt`.
-- **⚡ Safety First**: Cancelación automática de todas las órdenes al detener el bot (Ctrl+C).
-- **🔧 Highly Configurable**: Ajusta el spread, tamaño de orden y exposición máxima desde un simple `.env`.
-
----
-
-## 📈 Trading Strategy
-
-El bot utiliza una lógica de **Mid-Price Spreading**:
-
-1.  **Calcula el Mid-Price**: `(Best Bid + Best Ask) / 2`.
-2.  **Define el Spread**: Aplica un spread porcentual (ej. 2%) alrededor del mid-price.
-3.  **Ajuste por Riesgo**: Si el inventario supera el 70% de la capacidad máxima (`MAX_POSITION`), el bot entra en modo **"Skewing"**:
-    - Baja el Bid para dejar de comprar caro.
-    - Baja el Ask para vender más rápido y reducir exposición.
+- **✅ Automated Market Monitoring**: Near real-time price tracking (5s intervals)
+- **🛡️ Smart Key Validation**: Detects invalid PRIVATE_KEY formats (e.g., UUID with hyphens)
+- **🧪 Dry Run Mode**: Safe simulation without risking real funds
+- **📈 Performance Logging**: Detailed tracking in `logs/bot.log` and `logs/balance_history.txt`
+- **⚡ Retry Logic**: Automatic retries with exponential backoff for API failures
+- **🔧 Highly Configurable**: All settings via `.env` with validation
 
 ---
 
 ## 🛠️ Installation & Setup
 
-### 1. Requisitos
-- Python 3.8+
-- Una cuenta en Polymarket (API Keys opcionales para Dry Run).
+### Prerequisites
+- **Python 3.10+**
+- Polymarket account (optional for read-only mode)
 
-### 2. Clonar y Preparar
-```bash
-git clone https://github.com/tu-usuario/polymarket-bot.git
-cd polymarket-bot
-pip install -r requirements.txt
-```
+### Quick Start
 
-### 3. Configuración (`.env`)
-Copia el archivo de ejemplo y rellena tus datos:
-```bash
-cp .env.example .env
-```
+1. **Clone and Install**
+   ```bash
+   git clone https://github.com/tu-usuario/polymarket-bot.git
+   cd polymarket-bot
+   pip install -e .
+   ```
 
-**Variables clave:**
-- `PRIVATE_KEY`: Tu clave privada de Polygon (necesaria para trading real).
-- `TARGET_TOKEN_ID`: El ID del mercado en el que quieres operar.
-- `DRY_RUN`: Ponlo en `True` para simular, `False` para dinero real 🤑.
+2. **Configure Environment**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your settings
+   ```
+
+3. **Run the Bot**
+   ```bash
+   # Using Python module
+   python -m tradingbot.main
+   
+   # Using Makefile
+   make run
+   
+   # Force dry-run mode
+   make run-dry
+   ```
 
 ---
 
-## 📊 Performance & Stats
+## ⚙️ Configuration
 
-El bot genera logs automáticos de su rendimiento en `balance_history.txt`:
+### Basic Setup (Monitoring Only)
 
-```text
-[2026-03-18 14:00:00] Cash: $10.50 | Shares: 5.00 | Portfolio Val: $13.00 | Mid-Price: 0.500
-[2026-03-18 14:05:00] Cash: $8.20  | Shares: 10.00 | Portfolio Val: $13.20 | Mid-Price: 0.500
+```env
+# .env file
+DRY_RUN=True
+CHECK_INTERVAL_SECONDS=5
+VOLATILITY_THRESHOLD=0.05
 ```
 
-Puedes ver tu posición actual en tiempo real en `current_position.json`.
+### With Telegram Alerts
+
+```env
+TELEGRAM_TOKEN=123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
+TELEGRAM_CHAT_ID=12345678
+```
+
+### Live Trading (⚠️ Use with Caution)
+
+```env
+# Must be 64 hexadecimal characters (no hyphens!)
+PRIVATE_KEY=a1b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890
+DRY_RUN=False
+```
+
+**Common Error Fix:**
+```
+❌ Error: "Non-hexadecimal digit found"
+✅ Solution: Your PRIVATE_KEY has invalid format (probably UUID with hyphens).
+           Must be 64 pure hex characters: 0-9, a-f, A-F only.
+```
 
 ---
 
 ## 🚀 Usage
 
-Para lanzar el bot, simplemente ejecuta:
+### Using Makefile (Recommended)
 
 ```bash
-python main.py
+make install       # Install dependencies
+make run           # Run bot
+make run-dry       # Run in simulation mode
+make test          # Run tests
+make format        # Format code
+make lint          # Check code quality
+make logs          # View live logs
 ```
 
-*Si estás en modo **Live**, el bot esperará 5 segundos antes de empezar para que puedas cancelar por seguridad.*
+### Direct Python Commands
+
+```bash
+# Run bot
+python -m tradingbot.main
+
+# Run tests (when implemented)
+pytest tests/ -v --cov=tradingbot
+
+# Format code
+black tradingbot/ tests/
+ruff check tradingbot/ --fix
+
+# Type checking
+mypy tradingbot/
+```
+
+---
+
+## 📊 Real-Time Performance Comparison
+
+### Before v2.0 (Polling)
+```
+[10:00:00] Check markets...
+[10:10:00] Check markets...  ← 10 minutes gap
+[10:20:00] Check markets...
+```
+**Missing**: All price movements in 10-minute windows
+
+### After v2.0 (Real-Time)
+```
+[10:00:00] Check markets...
+[10:00:05] Check markets...  ← 5 seconds gap
+[10:00:10] Check markets...
+[10:00:15] Check markets...
+```
+**Catching**: Price movements within seconds
+
+---
+
+## 🏗️ Project Structure
+
+```
+polymarket-bot/
+├── tradingbot/              # Main package
+│   ├── __init__.py
+│   ├── main.py             # Entry point
+│   ├── config.py           # Pydantic configuration
+│   │
+│   ├── api/                # API client layer
+│   │   ├── client.py       # Enhanced CLOB client
+│   │   ├── models.py       # Data models (OrderBook, Balance, etc.)
+│   │   └── exceptions.py   # Custom exceptions
+│   │
+│   ├── market/             # Market data modules
+│   │   ├── discovery.py    # Trending market discovery
+│   │   ├── monitor.py      # Real-time price monitoring
+│   │   ├── models.py       # Market data classes
+│   │   └── events.py       # Event system
+│   │
+│   ├── strategies/         # Trading strategies
+│   │   ├── base.py         # Abstract strategy class
+│   │   └── market_maker.py # Market making implementation
+│   │
+│   ├── notifications/      # Alert system
+│   │   └── notifier.py     # Multi-channel notifier
+│   │
+│   └── utils/              # Utilities
+│       ├── validators.py   # Input validation
+│       ├── logger.py       # Logging configuration
+│       └── decorators.py   # Retry, timeout decorators
+│
+├── logs/                   # Generated logs
+│   ├── bot.log            # Main application log
+│   └── balance_history.txt
+│
+├── tests/                  # Test suite (to be implemented)
+│   ├── unit/
+│   └── integration/
+│
+├── pyproject.toml         # Modern Python packaging
+├── Makefile               # Development commands
+├── .env                   # Your configuration (not committed)
+├── .env.example           # Configuration template
+└── README.md              # This file
+```
+
+---
+
+## 🔍 Troubleshooting
+
+### Error: "Non-hexadecimal digit found"
+
+**Cause**: Your `PRIVATE_KEY` in `.env` has invalid format (likely a UUID with hyphens)
+
+**Solution**:
+```env
+# ❌ WRONG (UUID format)
+PRIVATE_KEY=019d084e-0940-781f-8173-5b22bd33da09
+
+# ✅ CORRECT (64 hex characters)
+PRIVATE_KEY=a1b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890
+# or with 0x prefix
+PRIVATE_KEY=0xa1b2c3d4e5f67890abcdef1234567890abcdef1234567890abcdef1234567890
+```
+
+The bot will now auto-detect this and force DRY_RUN mode for safety.
+
+### Error: "Module 'tradingbot' has no attribute..."
+
+**Cause**: Running from wrong directory or missing `__init__.py` files
+
+**Solution**:
+```bash
+# Run from project root directory
+cd /path/to/polymarket-bot
+python -m tradingbot.main
+```
+
+### No Markets Found
+
+**Cause**: Network issues or Polymarket API temporarily down
+
+**Solution**:
+1. Check internet connection
+2. Review `logs/bot.log` for specific errors
+3. Try increasing `CHECK_INTERVAL_SECONDS` to reduce API pressure
+
+---
+
+## 🧪 Testing (Coming Soon)
+
+```bash
+# Install test dependencies
+pip install -e ".[dev]"
+
+# Run unit tests
+pytest tests/unit/ -v
+
+# Run with coverage
+pytest --cov=tradingbot --cov-report=html
+
+# View coverage report
+open htmlcov/index.html
+```
+
+---
+
+## 📚 Documentation
+
+- **Architecture**: See `docs/architecture.md` (to be created)
+- **API Reference**: See `docs/api_reference.md` (to be created)
+- **Strategy Development**: See `docs/strategies.md` (to be created)
 
 ---
 

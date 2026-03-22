@@ -1,50 +1,27 @@
-[2026-03-18 23:31:06] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:07] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:12] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:17] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:22] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:27] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:32] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:37] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:42] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:47] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:52] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:31:57] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:32:02] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:32:07] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:32:12] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:32:18] Cash: $5.00 | Shares: 10.00 | Portfolio Val: $10.00 | Mid-Price: 0.500
-[2026-03-18 23:32:23] Cash: $0.05 | Shares: 20.00 | Portfolio Val: $10.05 | Mid-Price: 0.500
-[2026-03-18 23:32:28] Cash: $0.05 | Shares: 20.00 | Portfolio Val: $10.05 | Mid-Price: 0.500
-[2026-03-18 23:32:33] Cash: $0.05 | Shares: 20.00 | Portfolio Val: $10.05 | Mid-Price: 0.500
-[2026-03-18 23:32:38] Cash: $0.05 | Shares: 20.00 | Portfolio Val: $10.05 | Mid-Price: 0.500
-[2026-03-18 23:32:43] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:32:48] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:32:53] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:32:58] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:33:03] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:33:08] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:33:13] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:33:18] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:33:23] Cash: $5.10 | Shares: 10.00 | Portfolio Val: $10.10 | Mid-Price: 0.500
-[2026-03-18 23:33:29] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:33:34] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:33:39] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:33:44] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:33:49] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:33:54] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:33:59] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:34:04] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:34:09] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:34:14] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:34:19] Cash: $0.15 | Shares: 20.00 | Portfolio Val: $10.15 | Mid-Price: 0.500
-[2026-03-18 23:34:25] Cash: $5.20 | Shares: 10.00 | Portfolio Val: $10.20 | Mid-Price: 0.500
-[2026-03-18 23:34:30] Cash: $5.20 | Shares: 10.00 | Portfolio Val: $10.20 | Mid-Price: 0.500
-[2026-03-18 23:34:35] Cash: $0.25 | Shares: 20.00 | Portfolio Val: $10.25 | Mid-Price: 0.500
-[2026-03-18 23:34:40] Cash: $0.25 | Shares: 20.00 | Portfolio Val: $10.25 | Mid-Price: 0.500
-[2026-03-18 23:34:45] Cash: $0.25 | Shares: 20.00 | Portfolio Val: $10.25 | Mid-Price: 0.500
-[2026-03-18 23:34:50] Cash: $0.25 | Shares: 20.00 | Portfolio Val: $10.25 | Mid-Price: 0.500
-[2026-03-18 23:34:55] Cash: $0.25 | Shares: 20.00 | Portfolio Val: $10.25 | Mid-Price: 0.500
-[2026-03-18 23:35:00] Cash: $0.25 | Shares: 20.00 | Portfolio Val: $10.25 | Mid-Price: 0.500
-[2026-03-18 23:35:05] Cash: $0.25 | Shares: 20.00 | Portfolio Val: $10.25 | Mid-Price: 0.500
-[2026-03-18 23:35:10] Cash: $0.25 | Shares: 20.00 | Portfolio Val: $10.25 | Mid-Price: 0.500
+[2026-03-20 00:14:40] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:14:40] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:14:45] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:16:30] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:16:30] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:16:35] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:18:38] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:18:38] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:18:44] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:18:49] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:20:31] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:20:31] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:20:36] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:20:41] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:23:09] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:23:09] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:23:14] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:23:20] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:30:37] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:30:37] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:30:42] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:31:29] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:31:29] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:31:55] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:31:55] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:34:20] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
+[2026-03-20 00:34:20] REAL Cash: $0.00 | REAL Shares: 0.00 | Portfolio Val: $0.00 | Mid-Price: 0.500
