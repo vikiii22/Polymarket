@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
 
-# Cargar variables de entorno desde el archivo .env
-load_dotenv()
+# Cargar .env explícitamente desde la carpeta superior
+load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 class Config:
     def __init__(self):

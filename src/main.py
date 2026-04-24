@@ -1,8 +1,9 @@
 import asyncio
 import logging
+import os
 from config import config
 from py_clob_client.client import ClobClient
-from py_clob_client.clob_types import OrderArgs
+from py_clob_client.clob_types import OrderArgs, ApiCreds
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -13,25 +14,39 @@ class TradingBot:
         self.is_running = False
         
     async def initialize_client(self):
-        """Inicializa el ClobClient Oficial de Polymarket."""
-        logger.info("Inicializando conexión a PolyMarket CLOB...")
-        self.client = ClobClient(
-            config.HOST,
-            key=config.PRIVATE_KEY,
-            chain_id=config.CHAIN_ID,
-            funder=config.FUNDER_ADDRESS
-        )
+        """Inicializa el ClobClient con la sintaxis correcta de 2026."""
+        logger.info("Conectando a PolyMarket CLOB...")
+        
         try:
-            self.client.set_credentials(self.client.create_or_derive_api_creds())
-            logger.info("Cliente autenticado exitosamente.")
+            creds = ApiCreds(
+                api_key=os.getenv("POLYMARKET_API_KEY", ""),
+                api_secret=os.getenv("POLYMARKET_API_SECRET", ""),
+                api_passphrase=os.getenv("POLYMARKET_API_PASSPHRASE", "")
+            )
+            
+            self.client = ClobClient(
+                host=config.HOST,
+                key=config.PRIVATE_KEY,  # Private Key va aquí
+                chain_id=config.CHAIN_ID,
+                funder=config.FUNDER_ADDRESS,
+                creds=creds
+            )
+            
+            # En las versiones nuevas, basta con verificar si la conexión es válida
+            status = self.client.get_ok()
+            if status == "OK":
+                logger.info("Autenticación exitosa y API operativa.")
+            else:
+                raise Exception("La API de Polymarket no retornó estado OK.")
         except Exception as e:
-            logger.error(f"Error al autenticar: revisa tus claves de API/Private Key. {e}")
+            logger.error(f"Error de autenticación: {e}")
+            logger.info("Asegúrate de haber añadido tus llaves reales en el archivo .env")
             raise
 
     async def _strategy_loop(self):
         """Módulo de estrategia de Micro-Arbitraje simulado ejecutado periodicamente."""
-        from src.strategies.market_maker import BasicMarketMaker
-        from src.core.risk import RiskManager
+        from strategies.market_maker import BasicMarketMaker
+        from core.risk import RiskManager
         
         risk = RiskManager(config.CAPITAL_INICIAL, config.KELLY_FRACTION_MODIFIER)
         # Nota: aquí le pasamos self.client una vez inicializado

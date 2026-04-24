@@ -1,5 +1,5 @@
 import logging
-from src.strategies.base import BaseStrategy
+from strategies.base import BaseStrategy
 
 logger = logging.getLogger(__name__)
 
