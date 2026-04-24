@@ -11,6 +11,7 @@ class Config:
         self.PRIVATE_KEY = self._get_env("PRIVATE_KEY", secure=True)
         self.FUNDER_ADDRESS = self._get_env("FUNDER_ADDRESS")
         self.CAPITAL_INICIAL = float(self._get_env("CAPITAL_INICIAL", 10.0))
+        self.TARGET_TOKEN_ID = self._get_env("TARGET_TOKEN_ID") # Un Token ID por defecto (Token del Asset)
         
         # Límite Max Kelly (Ajustado) - Arriesga máximo el 5% del capital sugerido por de Kelly
         self.KELLY_FRACTION_MODIFIER = 0.05 
